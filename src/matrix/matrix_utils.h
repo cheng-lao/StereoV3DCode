@@ -7,25 +7,25 @@
 namespace sv3d
 {
 	/**
-	 * \brief ´Ó±¾ÖÊ¾ØÕó½âËãR,t
-	 * \param[in] E		±¾ÖÊ¾ØÕó
-	 * \param[out] R_vec R¾ØÕóµÄ¿ÉÄÜÖµ¼¯ºÏ
-	 * \param[out] t_vec t¾ØÕóµÄ¿ÉÄÜÖµ¼¯ºÏ
+	 * \brief ä»æœ¬è´¨çŸ©é˜µè§£ç®—R,t
+	 * \param[in] E		æœ¬è´¨çŸ©é˜µ
+	 * \param[out] R_vec RçŸ©é˜µçš„å¯èƒ½å€¼é›†åˆ
+	 * \param[out] t_vec tçŸ©é˜µçš„å¯èƒ½å€¼é›†åˆ
 	 */
 	void SolveRtFromEssential(const Mat3& E, std::vector<Mat3>& R_vec, std::vector<Vec3>& t_vec);
 
 	/**
-	 * \brief Ë«Ä¿Ç°·½½»»áÇó½âÊÀ½ç×ø±êÏµÏÂµÄ¿Õ¼äµã×ø±ê
-	 * \param[in] p1 Í¬ÃûµãÔÚ×óÊÓÍ¼µÄÏñËØ×ø±ê
-	 * \param[in] K1 ×óÊÓÍ¼ÄÚ²Î¾ØÕó
-	 * \param[in] R1 ×óÊÓÍ¼Íâ²ÎR¾ØÕó
-	 * \param[in] t1 ×óÊÓÍ¼Íâ²Ît¾ØÕó
-	 * \param[in] p2 Í¬ÃûµãÔÚÓÒÊÓÍ¼µÄÏñËØ×ø±ê
-	 * \param[in] K2 ÓÒÊÓÍ¼ÄÚ²Î¾ØÕó
-	 * \param[in] R2 ÓÒÊÓÍ¼Íâ²ÎR¾ØÕó
-	 * \param[in] t2 ÓÒÊÓÍ¼Íâ²Ît¾ØÕó
-	 * \param[out] X ¿Õ¼äµã×ø±ê
-	 * return true: ¿Õ¼äµãÔÚË«Ïà»úÇ°·½ 
+	 * \brief åŒç›®å‰æ–¹äº¤ä¼šæ±‚è§£ä¸–ç•Œåæ ‡ç³»ä¸‹çš„ç©ºé—´ç‚¹åæ ‡
+	 * \param[in] p1 åŒåç‚¹åœ¨å·¦è§†å›¾çš„åƒç´ åæ ‡
+	 * \param[in] K1 å·¦è§†å›¾å†…å‚çŸ©é˜µ
+	 * \param[in] R1 å·¦è§†å›¾å¤–å‚RçŸ©é˜µ
+	 * \param[in] t1 å·¦è§†å›¾å¤–å‚tçŸ©é˜µ
+	 * \param[in] p2 åŒåç‚¹åœ¨å³è§†å›¾çš„åƒç´ åæ ‡
+	 * \param[in] K2 å³è§†å›¾å†…å‚çŸ©é˜µ
+	 * \param[in] R2 å³è§†å›¾å¤–å‚RçŸ©é˜µ
+	 * \param[in] t2 å³è§†å›¾å¤–å‚tçŸ©é˜µ
+	 * \param[out] X ç©ºé—´ç‚¹åæ ‡
+	 * return true: ç©ºé—´ç‚¹åœ¨åŒç›¸æœºå‰æ–¹ 
 	 */
 	bool Triangulate2View(const Vec3& p1, const RMat3& K1, const Mat3& R1, const Vec3& t1,
 						  const Vec3& p2, const RMat3& K2, const Mat3& R2, const Vec3& t2,

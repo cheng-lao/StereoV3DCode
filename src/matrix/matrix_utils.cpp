@@ -3,15 +3,15 @@
 void sv3d::SolveRtFromEssential(const Mat3& E, std::vector<Mat3>& R_vec, std::vector<Vec3>& t_vec)
 {
 	// Multiple View Geometry in Computer Vision, chapter 9.7 page 259
-	// ¶Ô±¾ÖÊ¾ØÕó½øÐÐSVD·Ö½â
+	// å¯¹æœ¬è´¨çŸ©é˜µè¿›è¡ŒSVDåˆ†è§£
 	Eigen::JacobiSVD<Mat3> USV(E, Eigen::ComputeFullU | Eigen::ComputeFullV);
 	Mat3 U = USV.matrixU();
 	Mat3 Vt = USV.matrixV().transpose();
 
-	// ÓÉÓÚEµÄÁ½¸öÆæÒìÖµÏàµÈ£¬ËùÒÔUºÍVt²»Î¨Ò»£¬±íÏÖÎªUµÄµÄÇ°Á½ÁÐ¿ÉÒÔ»¥»»£¬VtµÄÇ°Á½ÐÐ¿ÉÒÔ»¥»»
-	// ÁÐ»¥»»ºÍÐÐ»¥»»´øÀ´µÄ½á¹ûÊÇÐÐÁÐÊ½»¥ÎªÏà·´Êý
-	// ¶øÐý×ªR¾ØÕóµÄÐÐÁÐÊ½ÊÇ+1,WµÄÐÐÁÐÊ½Îª+1,ÇÒR = UWVt or UWtVt, Èç¹ûUVµÄÐÐÁÐÊ½·ûºÅ²»ÏàÍ¬Çó³öµÄRÐÐÁÐÊ½ÊÇ-1£¬ÊÇ´íÎóµÄ
-	// ¿ÉÒÔÇ¿ÖÆÈÃUºÍVtµÄÐÐÁÐÊ½¾ùÎªÕýÖµ£¬µ±ÅÐ¶ÏUºÍVtÐÐÁÐÊ½Îª¸ºÊ±£¬°ÑUµÄ×îºóÒ»ÁÐºÍVtµÄ×îºóÒ»ÐÐ·ûºÅ×öÒ»¸öÏà·´£¬ÈÃÐÐÁÐÊ½±äÎªÕýÖµ
+	// ç”±äºŽEçš„ä¸¤ä¸ªå¥‡å¼‚å€¼ç›¸ç­‰ï¼Œæ‰€ä»¥Uå’ŒVtä¸å”¯ä¸€ï¼Œè¡¨çŽ°ä¸ºUçš„çš„å‰ä¸¤åˆ—å¯ä»¥äº’æ¢ï¼ŒVtçš„å‰ä¸¤è¡Œå¯ä»¥äº’æ¢
+	// åˆ—äº’æ¢å’Œè¡Œäº’æ¢å¸¦æ¥çš„ç»“æžœæ˜¯è¡Œåˆ—å¼äº’ä¸ºç›¸åæ•°
+	// è€Œæ—‹è½¬RçŸ©é˜µçš„è¡Œåˆ—å¼æ˜¯+1,Wçš„è¡Œåˆ—å¼ä¸º+1,ä¸”R = UWVt or UWtVt, å¦‚æžœUVçš„è¡Œåˆ—å¼ç¬¦å·ä¸ç›¸åŒæ±‚å‡ºçš„Rè¡Œåˆ—å¼æ˜¯-1ï¼Œæ˜¯é”™è¯¯çš„
+	// å¯ä»¥å¼ºåˆ¶è®©Uå’ŒVtçš„è¡Œåˆ—å¼å‡ä¸ºæ­£å€¼ï¼Œå½“åˆ¤æ–­Uå’ŒVtè¡Œåˆ—å¼ä¸ºè´Ÿæ—¶ï¼ŒæŠŠUçš„æœ€åŽä¸€åˆ—å’ŒVtçš„æœ€åŽä¸€è¡Œç¬¦å·åšä¸€ä¸ªç›¸åï¼Œè®©è¡Œåˆ—å¼å˜ä¸ºæ­£å€¼
 	if (U.determinant() < 0) {
 		U.col(2) *= -1;
 	}
@@ -52,9 +52,9 @@ bool sv3d::Triangulate2View(const Vec3& p1, const RMat3& K1, const Mat3& R1, con
 							const Vec3& p2, const RMat3& K2, const Mat3& R2, const Vec3& t2,
 							Vec3& X)
 {
-	// Ë«Ä¿Ç°·½½»»áÇó½âÊÀ½ç×ø±êÏµÏÂµÄ¿Õ¼äµã×ø±ê
+	// åŒç›®å‰æ–¹äº¤ä¼šæ±‚è§£ä¸–ç•Œåæ ‡ç³»ä¸‹çš„ç©ºé—´ç‚¹åæ ‡
 
-	// ¼ÆËãÍ¶Ó°¾ØÕó
+	// è®¡ç®—æŠ•å½±çŸ©é˜µ
 	Mat34 P1, P2;
 	P1.block<3, 3>(0, 0) = R1;
 	P2.block<3, 3>(0, 0) = R2;
@@ -63,7 +63,7 @@ bool sv3d::Triangulate2View(const Vec3& p1, const RMat3& K1, const Mat3& R1, con
 	P1 = K1 * P1;
 	P2 = K2 * P2;
 	
-	// DLTÖ±½ÓÏßÐÔ±ä»»·¨Çó½â
+	// DLTç›´æŽ¥çº¿æ€§å˜æ¢æ³•æ±‚è§£
 	// dp = PX -> 0 = cross(p,dp) = cross(p,PX) -> cross(p,P)X = 0 -> AX = 0, A = cross(p,P)
 	// cross(p1,P1)X = 0
 	// cross(p2,P2)X = 0
@@ -73,7 +73,7 @@ bool sv3d::Triangulate2View(const Vec3& p1, const RMat3& K1, const Mat3& R1, con
 	A.row(2) = p2[1] * P2.row(2) - p2[2] * P2.row(1);
 	A.row(3) = p2[2] * P2.row(0) - p2[0] * P2.row(2);
 
-	// SVD·Ö½â¾ØÕóVµÄ×îºóÒ»ÁÐ£¬¼´ATAµÄ×îÐ¡ÌØÕ÷Öµ¶ÔÓ¦µÄÌØÕ÷ÏòÁ¿
+	// SVDåˆ†è§£çŸ©é˜µVçš„æœ€åŽä¸€åˆ—ï¼Œå³ATAçš„æœ€å°ç‰¹å¾å€¼å¯¹åº”çš„ç‰¹å¾å‘é‡
 	JacobiSVD<Mat4> svd(A, ComputeFullV);
 	X = (svd.matrixV().col(3)).hnormalized();
 	

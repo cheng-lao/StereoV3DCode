@@ -11,13 +11,13 @@ void sv3d::EssentialSolver::Solve(const Mat3X p1, const Mat3X p2, const Mat3 k1_
 	assert(p1.rows() == p2.rows());
 	assert(p1.cols() == p2.cols());
 	
-	// Í¨¹ıÄÚ²Î¾ØÕók½«p×ª»»µ½x£¬x = k_inv*p
+	// é€šè¿‡å†…å‚çŸ©é˜µkå°†pè½¬æ¢åˆ°xï¼Œx = k_inv*p
 	Mat3X x1(3,p1.cols()), x2(3,p2.cols());
 
 	x1 = k1_mat.inverse() * p1;
 	x2 = k2_mat.inverse() * p2;
 
-	// Çó½â
+	// æ±‚è§£
 	Solve(x1, x2, solver_type);
 }
 
@@ -42,7 +42,7 @@ void sv3d::EssentialSolver::Solve_EightPoints(const Mat3X x1, const Mat3X x2)
 	assert(x1.rows() == x2.rows());
 	assert(x1.cols() == x2.cols());
 
-	// ¹¹½¨ÏßĞÔ·½³Ì×éµÄÏµÊı¾ØÕóA
+	// æ„å»ºçº¿æ€§æ–¹ç¨‹ç»„çš„ç³»æ•°çŸ©é˜µA
 	auto np = x1.cols();
 	RMatX9 a_mat(np, 9);
 	for (int n = 0; n < np; n++) {
@@ -56,14 +56,14 @@ void sv3d::EssentialSolver::Solve_EightPoints(const Mat3X x1, const Mat3X x2)
 		dat[6] = x1_x; dat[7] = x1_y; dat[8] = 1;
 	}
 	
-	// Çó½âATAµÄ×îĞ¡ÌØÕ÷Öµ¶ÔÓ¦µÄÌØÕ÷ÏòÁ¿¼´Ê¸Á¿ e
+	// æ±‚è§£ATAçš„æœ€å°ç‰¹å¾å€¼å¯¹åº”çš„ç‰¹å¾å‘é‡å³çŸ¢é‡ e
 	Eigen::SelfAdjointEigenSolver<Eigen::Matrix<double,9, 9>> solver(a_mat.transpose()*a_mat);
 	const Vec9 e = solver.eigenvectors().col(0);
 	
-	// Ê¸Á¿ e ¹¹Ôì±¾ÖÊ¾ØÕó E
+	// çŸ¢é‡ e æ„é€ æœ¬è´¨çŸ©é˜µ E
 	data_ = Eigen::Map<const RMat3>(e.data());
 	
-	// µ÷Õû E ¾ØÕóÊ¹Âú×ãÄÚÔÚĞÔÖÊ£ºÆæÒìÖµÎª[¦Ò ¦Ò 0]
+	// è°ƒæ•´ E çŸ©é˜µä½¿æ»¡è¶³å†…åœ¨æ€§è´¨ï¼šå¥‡å¼‚å€¼ä¸º[Ïƒ Ïƒ 0]
 	Eigen::JacobiSVD<Mat3> usv(data_, Eigen::ComputeFullU | Eigen::ComputeFullV);
 	auto s = usv.singularValues();
 	const auto a = s[0];

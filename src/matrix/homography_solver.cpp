@@ -21,7 +21,7 @@ void sv3d::HomographySolver::Solve_FourPoints(const Mat3X p1, const Mat3X p2)
 	assert(p1.rows() == p2.rows());
 	assert(p1.cols() == p2.cols());
 
-	// ¹¹½¨ÏßÐÔ·½³Ì×éAh=bµÄÏµÊý¾ØÕóAºÍ¾ØÕób
+	// æž„å»ºçº¿æ€§æ–¹ç¨‹ç»„Ah=bçš„ç³»æ•°çŸ©é˜µAå’ŒçŸ©é˜µb
 	auto np = p1.cols();
 	RMatXX a_mat(2 * np, 8), at(8, 2 * np), ata(8, 8);
 	MatXX b_mat(2 * np, 1), atb(8, 1);
@@ -37,14 +37,14 @@ void sv3d::HomographySolver::Solve_FourPoints(const Mat3X p1, const Mat3X p2)
 		b_mat.data()[2 * n] = p2_x; b_mat.data()[2 * n + 1] = p2_y;
 	}
 
-	// ½âAh=b
+	// è§£Ah=b
 	at = a_mat.transpose();
 	ata = at * a_mat;
 	atb = at * b_mat;
 	MatXX h(8, 1);
 	h = ata.inverse() * atb;
 
-	// ¹¹Ôìµ¥Ó¦ÐÔ¾ØÕóH
+	// æž„é€ å•åº”æ€§çŸ©é˜µH
 	data_ = Eigen::Map<const RMat3>(h.data());
 	data_.data()[8] = 1.;
 }

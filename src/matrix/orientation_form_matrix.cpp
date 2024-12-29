@@ -11,7 +11,7 @@ bool sv3d::OrientationFormEssential(const Mat3X& p1, const Mat3X& p2,
 	assert(p1.rows() == p2.rows());
 	assert(p1.cols() == p2.cols());
 
-	// ·Ö½âE¾ØÕóµÃµ½R,tºòÑ¡Öµ
+	// åˆ†è§£EçŸ©é˜µå¾—åˆ°R,tå€™é€‰å€¼
 	std::vector<Mat3> R_vec;
 	std::vector<Vec3> t_vec;
 	SolveRtFromEssential(E,R_vec,t_vec);
@@ -19,8 +19,8 @@ bool sv3d::OrientationFormEssential(const Mat3X& p1, const Mat3X& p2,
 		return false;
 	}
 	
-	// R,t¸÷Á½×éÖµ£¬¹²4ÖĞ×éºÏ
-	// ¼ÆËã¸÷×éºÏÔÚÏà»úÇ°·½µÄ¹Û²âµãÊı£¬µãÊı×î¶àµÄ×éºÏÎª×îÓÅ½â
+	// R,tå„ä¸¤ç»„å€¼ï¼Œå…±4ä¸­ç»„åˆ
+	// è®¡ç®—å„ç»„åˆåœ¨ç›¸æœºå‰æ–¹çš„è§‚æµ‹ç‚¹æ•°ï¼Œç‚¹æ•°æœ€å¤šçš„ç»„åˆä¸ºæœ€ä¼˜è§£
 	struct Pose {
 		Mat3* R;
 		Vec3* t;
@@ -34,9 +34,9 @@ bool sv3d::OrientationFormEssential(const Mat3X& p1, const Mat3X& p2,
 	Mat3 R0; R0.setIdentity();
 	Vec3 t0; t0.setZero();
 
-	vector<unsigned> num_front_points(4);		// ±£´æÔÚË«Ïà»úÇ°·½µÄµãÊı
+	vector<unsigned> num_front_points(4);		// ä¿å­˜åœ¨åŒç›¸æœºå‰æ–¹çš„ç‚¹æ•°
 
-	// Ñ¡ÔñË«Ïà»úÇ°·½µãÊı×î¶àµÄPose×÷Îª×îÓÅµÄPose
+	// é€‰æ‹©åŒç›¸æœºå‰æ–¹ç‚¹æ•°æœ€å¤šçš„Poseä½œä¸ºæœ€ä¼˜çš„Pose
 	unsigned max_front_points = 0;
 	int max_idx = -1;
 	for (int k = 0; k < 4; k++) {
@@ -46,7 +46,7 @@ bool sv3d::OrientationFormEssential(const Mat3X& p1, const Mat3X& p2,
 			const Vec3& x1 = p1.col(n);
 			const Vec3& x2 = p2.col(n);
 			Vec3 X;
-			// Èı½Ç»¯¼ÆËã¿Õ¼äµã×ø±ê£¬²¢ÅĞ¶Ï¿Õ¼äµã×ø±êÊÇ·ñÔÚÁ½¸öÏà»úÇ°·½
+			// ä¸‰è§’åŒ–è®¡ç®—ç©ºé—´ç‚¹åæ ‡ï¼Œå¹¶åˆ¤æ–­ç©ºé—´ç‚¹åæ ‡æ˜¯å¦åœ¨ä¸¤ä¸ªç›¸æœºå‰æ–¹
 			if(Triangulate2View(x1, k1_mat, R0, t0, x2, k2_mat, *pose.R, *pose.t, X)) {
 				++num_front_points[k];
 			}
@@ -60,11 +60,11 @@ bool sv3d::OrientationFormEssential(const Mat3X& p1, const Mat3X& p2,
 	if (max_idx == -1)
 		return false;
 
-	// Êä³ö×îÓÅµÄR,t
+	// è¾“å‡ºæœ€ä¼˜çš„R,t
 	R = *pose_vec[max_idx].R;
 	t = *pose_vec[max_idx].t;
 
-	// ¼ÆËãÎ¨Ò»ĞÔ
+	// è®¡ç®—å”¯ä¸€æ€§
 	std::sort(num_front_points.begin(), num_front_points.end());
 
 	const double ratio = num_front_points.rbegin()[1] / static_cast<double>(num_front_points.rbegin()[0]);

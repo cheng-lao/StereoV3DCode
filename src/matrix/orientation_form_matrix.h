@@ -6,16 +6,16 @@
 namespace sv3d {
 	
 	/**
-	 * \brief ´Ó±¾ÖÊ¾ØÕó»Ö¸´Ïñ¶ÔµÄÏà¶ÔR/t£¬·µ»ØÏà»úÇ°·½ÓĞ×î¶àµãµÄ½â
-	 * \param p1[in]		Í¬Ãûµã¶ÔÔÚ×óÊÓÍ¼µÄµã¼¯ 
-	 * \param p2[in]		Í¬Ãûµã¶ÔÔÚÓÒÊÓÍ¼µÄµã¼¯
-	 * \param k1_mat[in]	×óÊÓÍ¼ÄÚ²Î¾ØÕó
-	 * \param k2_mat[in]	ÓÒÊÓÍ¼ÄÚ²Î¾ØÕó
-	 * \param E[in]			±¾ÖÊ¾ØÕó
-	 * \param R[out]		R¾ØÕó
-	 * \param t[out]		tÊ¸Á¿ 
-	 * \param uniqueness_ratio[in]	Î¨Ò»ĞÔ±ÈÀı£¨´Î×î¼Ñ½âºÍ×î¼Ñ½âÏà»úÇ°µÄµãÊı±ÈÀıãĞÖµ£¬Ğ¡ÓÚãĞÖµÔò·µ»Øfalse£©
-	 * \return true:Çó½â³É¹¦ false:Çó½âÊ§°Ü
+	 * \brief ä»æœ¬è´¨çŸ©é˜µæ¢å¤åƒå¯¹çš„ç›¸å¯¹R/tï¼Œè¿”å›ç›¸æœºå‰æ–¹æœ‰æœ€å¤šç‚¹çš„è§£
+	 * \param p1[in]		åŒåç‚¹å¯¹åœ¨å·¦è§†å›¾çš„ç‚¹é›† 
+	 * \param p2[in]		åŒåç‚¹å¯¹åœ¨å³è§†å›¾çš„ç‚¹é›†
+	 * \param k1_mat[in]	å·¦è§†å›¾å†…å‚çŸ©é˜µ
+	 * \param k2_mat[in]	å³è§†å›¾å†…å‚çŸ©é˜µ
+	 * \param E[in]			æœ¬è´¨çŸ©é˜µ
+	 * \param R[out]		RçŸ©é˜µ
+	 * \param t[out]		tçŸ¢é‡ 
+	 * \param uniqueness_ratio[in]	å”¯ä¸€æ€§æ¯”ä¾‹ï¼ˆæ¬¡æœ€ä½³è§£å’Œæœ€ä½³è§£ç›¸æœºå‰çš„ç‚¹æ•°æ¯”ä¾‹é˜ˆå€¼ï¼Œå°äºé˜ˆå€¼åˆ™è¿”å›falseï¼‰
+	 * \return true:æ±‚è§£æˆåŠŸ false:æ±‚è§£å¤±è´¥
 	 */
 	bool OrientationFormEssential(const Mat3X & p1, const Mat3X & p2,
 		const RMat3& k1_mat, const RMat3& k2_mat,

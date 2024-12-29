@@ -23,40 +23,40 @@ namespace  sv3d
 		};
 
 		/**
-		 * \brief ±¾ÖÊ¾ØÕóÇó½â
-		 * \param p1[in] ÊÓÍ¼1ÉÏÏñËØµãÆë´Î×ø±ê
-		 * \param p2[in] ÊÓÍ¼2ÉÏÏñËØµãÆë´Î×ø±ê
-		 * \param k1_mat[in] Ïà»ú1ÄÚ²Î¾ØÕó
-		 * \param k2_mat[in] Ïà»ú2ÄÚ²Î¾ØÕó
-		 * \param solver_type[in] Çó½âËã·¨ÀàĞÍ
+		 * \brief æœ¬è´¨çŸ©é˜µæ±‚è§£
+		 * \param p1[in] è§†å›¾1ä¸Šåƒç´ ç‚¹é½æ¬¡åæ ‡
+		 * \param p2[in] è§†å›¾2ä¸Šåƒç´ ç‚¹é½æ¬¡åæ ‡
+		 * \param k1_mat[in] ç›¸æœº1å†…å‚çŸ©é˜µ
+		 * \param k2_mat[in] ç›¸æœº2å†…å‚çŸ©é˜µ
+		 * \param solver_type[in] æ±‚è§£ç®—æ³•ç±»å‹
 		 */
 		void Solve(const Mat3X p1, const Mat3X p2, const Mat3 k1_mat, const Mat3 k2_mat, const SOLVE_TYPE& solver_type);
 
 		/**
-		 * \brief ±¾ÖÊ¾ØÕóÇó½â
-		 * \param x1[in] ÊÓÍ¼1ÉÏµÄ¹éÒ»»¯ÏñËØµãÆë´Î×ø±ê(x = k_inv*p)
-		 * \param x2[in] ÊÓÍ¼2ÉÏµÄ¹éÒ»»¯ÏñËØµãÆë´Î×ø±ê
-		 * \param solver_type[in] Çó½âËã·¨ÀàĞÍ
+		 * \brief æœ¬è´¨çŸ©é˜µæ±‚è§£
+		 * \param x1[in] è§†å›¾1ä¸Šçš„å½’ä¸€åŒ–åƒç´ ç‚¹é½æ¬¡åæ ‡(x = k_inv*p)
+		 * \param x2[in] è§†å›¾2ä¸Šçš„å½’ä¸€åŒ–åƒç´ ç‚¹é½æ¬¡åæ ‡
+		 * \param solver_type[in] æ±‚è§£ç®—æ³•ç±»å‹
 		 */
 		void Solve(const Mat3X x1, const Mat3X x2, const SOLVE_TYPE& solver_type);
 
 		/**
-		 * \brief »ñÈ¡±¾ÖÊ¾ØÕó
-		 * \return ±¾ÖÊ¾ØÕó
+		 * \brief è·å–æœ¬è´¨çŸ©é˜µ
+		 * \return æœ¬è´¨çŸ©é˜µ
 		 */
 		Mat3 Value();
 	private:
 
 		/**
-		 * \brief °Ëµã·¨Çó½â±¾ÖÊ¾ØÕó
-		 * \param x1[in] ÊÓÍ¼1ÉÏµÄ¹éÒ»»¯ÏñËØµãÆë´Î×ø±ê(x = k_inv*p)
-		 * \param x2[in] ÊÓÍ¼2ÉÏµÄ¹éÒ»»¯ÏñËØµãÆë´Î×ø±ê
+		 * \brief å…«ç‚¹æ³•æ±‚è§£æœ¬è´¨çŸ©é˜µ
+		 * \param x1[in] è§†å›¾1ä¸Šçš„å½’ä¸€åŒ–åƒç´ ç‚¹é½æ¬¡åæ ‡(x = k_inv*p)
+		 * \param x2[in] è§†å›¾2ä¸Šçš„å½’ä¸€åŒ–åƒç´ ç‚¹é½æ¬¡åæ ‡
 		 */
 		void Solve_EightPoints(const Mat3X x1, const Mat3X x2);
 
 		//void Solve_FivePoints(const Mat3X x1, const Mat3X x2);
 
-		/* ±¾ÖÊ¾ØÕóÊı¾İ */
+		/* æœ¬è´¨çŸ©é˜µæ•°æ® */
 		Mat3 data_;
 	};
 

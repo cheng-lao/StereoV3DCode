@@ -12,55 +12,55 @@ using namespace Eigen;
 
 namespace sv3d
 {
-	// 3d Ê¸Á¿ (doubleÀàĞÍ)
+	// 3d çŸ¢é‡ (doubleç±»å‹)
 	using Vec2 = Eigen::Vector2d;
 		
-	/// 2d Ê¸Á¿ (floatÀàĞÍ)
+	/// 2d çŸ¢é‡ (floatç±»å‹)
 	using Vec2f = Eigen::Vector2f;
 	
-	// 3d Ê¸Á¿ (doubleÀàĞÍ)
+	// 3d çŸ¢é‡ (doubleç±»å‹)
 	using Vec3 = Eigen::Vector3d;
 
-	// 3d Ê¸Á¿ (floatÀàĞÍ)
+	// 3d çŸ¢é‡ (floatç±»å‹)
 	using Vec3f = Eigen::Vector3f;
 
-	/// 4d Ê¸Á¿ 
+	/// 4d çŸ¢é‡ 
 	using Vec4 = Eigen::Vector4d;
 	
-	// 9d Ê¸Á¿
+	// 9d çŸ¢é‡
 	using Vec9 = Eigen::Matrix<double, 9, 1>;
 	
-	// 3x3 ¾ØÕó (doubleÀàĞÍ)
+	// 3x3 çŸ©é˜µ (doubleç±»å‹)
 	using Mat3 = Eigen::Matrix<double, 3, 3>;
 		
-	// 3x4 ¾ØÕó (doubleÀàĞÍ)
+	// 3x4 çŸ©é˜µ (doubleç±»å‹)
 	using Mat34 = Eigen::Matrix<double, 3, 4>;
 	
-	// 3x3 ¾ØÕó (doubleÀàĞÍ)£¨ĞĞÖ÷Ğò£©
+	// 3x3 çŸ©é˜µ (doubleç±»å‹)ï¼ˆè¡Œä¸»åºï¼‰
 	using RMat3 = Eigen::Matrix<double, 3, 3, Eigen::RowMajor>;
 
-	// 3x4 ¾ØÕó (doubleÀàĞÍ)
+	// 3x4 çŸ©é˜µ (doubleç±»å‹)
 	using RMat34 = Eigen::Matrix<double, 3, 4, Eigen::RowMajor>;
 
-	// 4x4 ¾ØÕó (doubleÀàĞÍ)
+	// 4x4 çŸ©é˜µ (doubleç±»å‹)
 	using Mat4 = Eigen::Matrix<double, 4, 4>;
 	
-	// 2xN ¾ØÕó (doubleÀàĞÍ)
+	// 2xN çŸ©é˜µ (doubleç±»å‹)
 	using Mat2X = Eigen::Matrix<double, 2, Eigen::Dynamic>;
 		
-	// 3xN ¾ØÕó (doubleÀàĞÍ)
+	// 3xN çŸ©é˜µ (doubleç±»å‹)
 	using Mat3X = Eigen::Matrix<double, 3, Eigen::Dynamic>;
 
-	// Nx9 ¾ØÕó (doubleÀàĞÍ)
+	// Nx9 çŸ©é˜µ (doubleç±»å‹)
 	using MatX9 = Eigen::Matrix<double, Eigen::Dynamic, 9>;
 
-	// Nx9 ¾ØÕó (doubleÀàĞÍ)£¨ĞĞÖ÷Ğò£©
+	// Nx9 çŸ©é˜µ (doubleç±»å‹)ï¼ˆè¡Œä¸»åºï¼‰
 	using RMatX9 = Eigen::Matrix<double, Eigen::Dynamic, 9, Eigen::RowMajor>;
 
-	// NxM ¾ØÕó (doubleÀàĞÍ)
+	// NxM çŸ©é˜µ (doubleç±»å‹)
 	using MatXX = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>;
 
-	// NxM ¾ØÕó (doubleÀàĞÍ)£¨ĞĞÖ÷Ğò£©
+	// NxM çŸ©é˜µ (doubleç±»å‹)ï¼ˆè¡Œä¸»åºï¼‰
 	using RMatXX = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>;
 }
 

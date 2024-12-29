@@ -6,20 +6,20 @@
 #ifndef SV3D_TEST_DATASETS_H
 #define SV3D_TEST_DATASETS_H
 #include "../eigen_defs.h"
-#include "Camera.h"
+#include "../camera/Camera.h"
 
 namespace sv3d
 {
 	struct SimulativeStereoDataset
 	{
-		unsigned w, h;		// Ó°Ïñ¿í¸ß
-		Camera	cam1, cam2;	// Á½¸öÏà»ú
+		unsigned w, h;		// å½±åƒå®½é«˜
+		Camera	cam1, cam2;	// ä¸¤ä¸ªç›¸æœº
 
 		Mat3 E,F;
 		
 		SimulativeStereoDataset() {
 			
-			// Ä£Äâ¹¹ÔìÒ»×éË«Ä¿ÏµÍ³
+			// æ¨¡æ‹Ÿæ„é€ ä¸€ç»„åŒç›®ç³»ç»Ÿ
 			w = 640; h = 480;
 			Mat3 K1,K2,R,RI;
 			Vec3 t0, t;
@@ -39,32 +39,32 @@ namespace sv3d
 			cam1 = Camera(K1, RI, t0);
 			cam2 = Camera(K2, R, t);
 
-			// Çó½â±¾ÖÊ¾ØÕó
+			// æ±‚è§£æœ¬è´¨çŸ©é˜µ
 			Mat3 tx;
 			tx << 0., -cam2.t_[2], cam2.t_[1],
 				cam2.t_[2], 0., -cam2.t_[0],
 				-cam2.t_[1], cam2.t_[0], 0;
 			E = tx * R;
 			
-			// Çó½â»ù´¡¾ØÕó
+			// æ±‚è§£åŸºç¡€çŸ©é˜µ
 			F = cam2.K_.inverse().transpose() * E * cam1.K_.inverse();
 		}
 
 		/**
-		 * \brief Éú³ÉÍ¬Ãûµã¶Ô
-		 * \param k[in]		ÒªÉú³ÉµÄÍ¬Ãûµã¶ÔÊıÁ¿
-		 * \param p1[in]	Ïà»ú1ÉÏµÄÏñËØµã
-		 * \param p2[in]	Ïà»ú2ÉÏµÄÏñËØµã
+		 * \brief ç”ŸæˆåŒåç‚¹å¯¹
+		 * \param k[in]		è¦ç”Ÿæˆçš„åŒåç‚¹å¯¹æ•°é‡
+		 * \param p1[in]	ç›¸æœº1ä¸Šçš„åƒç´ ç‚¹
+		 * \param p2[in]	ç›¸æœº2ä¸Šçš„åƒç´ ç‚¹
 		 */
 		void GenarateHomonymyPairs(const unsigned& k, Mat3X& p1,Mat3X& p2);
 
 		
 		/**
-		 * \brief Éú³ÉÒ»¸öÆ½ÃæÄÚµÄÍ¬Ãûµã¶Ô
-		 * \param k[in]		ÒªÉú³ÉµÄÍ¬Ãûµã¶ÔÊıÁ¿
-		 * \param p1[in]	Ïà»ú1ÉÏµÄÏñËØµã
-		 * \param p2[in]	Ïà»ú2ÉÏµÄÏñËØµã
-		 * \param H[in]		p1,p2µÄµ¥Ó¦ĞÔ±ä»»¾ØÕó£¬p2 = H*p1
+		 * \brief ç”Ÿæˆä¸€ä¸ªå¹³é¢å†…çš„åŒåç‚¹å¯¹
+		 * \param k[in]		è¦ç”Ÿæˆçš„åŒåç‚¹å¯¹æ•°é‡
+		 * \param p1[in]	ç›¸æœº1ä¸Šçš„åƒç´ ç‚¹
+		 * \param p2[in]	ç›¸æœº2ä¸Šçš„åƒç´ ç‚¹
+		 * \param H[in]		p1,p2çš„å•åº”æ€§å˜æ¢çŸ©é˜µï¼Œp2 = H*p1
 		 */
 		void GenarateHomonymyPairsInPlane(const unsigned& k, Mat3X& p1, Mat3X& p2, Mat3& H);
 	};

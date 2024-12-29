@@ -19,26 +19,26 @@ namespace  sv3d
 		~HomographySolver() = default;
 		
 		/**
-		 * \brief µ¥Ó¦ĞÔ¾ØÕóÇó½â
-		 * \param[in] p1 ÊÓÍ¼1ÉÏÏñËØµãÆë´Î×ø±ê
-		 * \param[in] p2 ÊÓÍ¼2ÉÏÏñËØµãÆë´Î×ø±ê
+		 * \brief å•åº”æ€§çŸ©é˜µæ±‚è§£
+		 * \param[in] p1 è§†å›¾1ä¸Šåƒç´ ç‚¹é½æ¬¡åæ ‡
+		 * \param[in] p2 è§†å›¾2ä¸Šåƒç´ ç‚¹é½æ¬¡åæ ‡
 		 */
 		void Solve(const Mat3X p1, const Mat3X p2);
 
 		/**
-		 * \brief »ñÈ¡µ¥Ó¦ĞÔ¾ØÕó
-		 * \return µ¥Ó¦ĞÔ¾ØÕó
+		 * \brief è·å–å•åº”æ€§çŸ©é˜µ
+		 * \return å•åº”æ€§çŸ©é˜µ
 		 */
 		Mat3 Value();
 	private:
 		/**
-		 * \brief ËÄµã·¨Çó½âµ¥Ó¦ĞÔ¾ØÕó
-		 * \param[in] p1 ÊÓÍ¼1ÉÏµÄÏñËØµãÆë´Î×ø±ê
-		 * \param[in] p2 ÊÓÍ¼2ÉÏµÄÏñËØµãÆë´Î×ø±ê
+		 * \brief å››ç‚¹æ³•æ±‚è§£å•åº”æ€§çŸ©é˜µ
+		 * \param[in] p1 è§†å›¾1ä¸Šçš„åƒç´ ç‚¹é½æ¬¡åæ ‡
+		 * \param[in] p2 è§†å›¾2ä¸Šçš„åƒç´ ç‚¹é½æ¬¡åæ ‡
 		 */
 		void Solve_FourPoints(const Mat3X p1, const Mat3X p2);
 
-		/* µ¥Ó¦ĞÔ¾ØÕóÊı¾İ */
+		/* å•åº”æ€§çŸ©é˜µæ•°æ® */
 		Mat3 data_;
 	};
 
